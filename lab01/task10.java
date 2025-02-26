@@ -6,17 +6,16 @@ import java.util.Scanner;
 
 public class task10 {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int sizeArray = sc.nextInt();
+        int array[] = {1, 4, 5, 6, 2, 10, 15};
+        int array1[] = {};
 
-        int[] numbersArray = new int[sizeArray];
+        System.out.println(max(array));
+    }
 
-        for(int i = 0; i < numbersArray.length; i++) {
-            numbersArray[i] = sc.nextInt();
+    public static int max(int array[]) {
+        if (array.length == 0 || array == null) {
+            System.out.println("Массив не може бути пустим чи null!");
         }
-
-        int max = Arrays.stream(numbersArray).max().getAsInt();
-
-        System.out.println("Максимальний елемент: " + max);
+        return Arrays.stream(array).max().getAsInt();
     }
 }

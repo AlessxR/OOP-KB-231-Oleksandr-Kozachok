@@ -2,7 +2,7 @@ package lab01;
 
 public class task9 {
     public static void main(String[] args) {
-        printQuadraticRoots(2, 2, 2);
+        printQuadraticRoots(2, 5, -3);
     }
 
     public static double getDiscriminant(double a, double b, double c) {
