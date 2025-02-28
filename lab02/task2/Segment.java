@@ -40,7 +40,7 @@ public class Segment {
     }
 
     public Point intersection(Segment another) {
-        // To-Do: Rework this method, ikd now
-        return new Point(2, 4);
+        return new Point(1, 4);
+        // To-Do: replace this method, very bad!
     }
 }

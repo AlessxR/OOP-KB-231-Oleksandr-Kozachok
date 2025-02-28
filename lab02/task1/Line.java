@@ -1,28 +1,30 @@
 package lab02.task1;
 
 public class Line {
-    private int x1;
-    private int y1;
+     private double k;
+     private double b;
 
-    public Line(int y1, int x1) {
-        this.y1 = y1;
-        this.x1 = x1;
+    public Line(double k, double b) {
+        this.k = k;
+        this.b = b;
     }
 
-    public int getY1() {
-        return y1;
-    }
-
-    public int getX1() {
-        return x1;
-    }
-
-    public Point intersection(Line line) {
-        if (line.getY1() == this.getY1()) {
+    public Point intersection(Line otherLine) {
+        if (getK() == otherLine.k || getB() == otherLine.b) {
             return null;
         }
-        double x = 1.0 * (line.getY1() - this.getY1()) / (this.getX1() - line.getX1());
-        double y = this.getX1() - line.getX1();
+
+        double x = (otherLine.b - getB()) / (getK() - otherLine.k);
+        double y = getK() * x + getB();
+
         return new Point(x, y);
+    }
+
+    public double getK() {
+        return k;
+    }
+
+    public double getB() {
+        return b;
     }
 }

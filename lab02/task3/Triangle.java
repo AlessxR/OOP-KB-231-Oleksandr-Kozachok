@@ -2,45 +2,53 @@ package lab02.task3;
 
 public class Triangle {
 
-    private Point x;
-    private Point y;
-    private Point z;
+    private final Point a, b, c;
+    private final double ab, ac, bc;
 
+    public Triangle(Point a, Point b, Point c) {
+        if (null == a || null == b || null == c) {
+            throw new NullPointerException("Null point!");
+        }
 
-    public Triangle(Point x, Point y, Point z) {
-        this.x = x;
-        this.y = y;
-        this.z = z;
+        this.a = a;
+        this.b = b;
+        this.c = c;
+        this.ab = length(a, b);
+        this.ac = length(a, c);
+        this.bc = length(b, c);
+
+        if (ab + ac <= bc || ab + bc <= ac || ac + bc <= ab) {
+            throw new IllegalArgumentException("Degenerate triangle.");
+        }
     }
 
+
     public double area() {
-        double a = Math.sqrt(Math.pow(y.getX() - x.getX(), 2) + Math.pow(y.getY() - x.getY(), 2) + Math.pow(y.getZ() - x.getZ(), 2));
-        double b = Math.sqrt(Math.pow(z.getX() - y.getX(), 2) + Math.pow(z.getY() - y.getY(), 2) + Math.pow(z.getZ() - y.getZ(), 2));
-        double c = Math.sqrt(Math.pow(x.getX() - z.getX(), 2) + Math.pow(x.getY() - z.getY(), 2) + Math.pow(x.getZ() - z.getZ(), 2));
+        return Math.abs(
+                (a.getX() - c.getX()) * (b.getY() - a.getY())
+                        - (a.getX() - b.getX()) * (c.getY() - a.getY())
+        ) / 2.0;
+    }
 
-        System.out.println("Side a: " + a);
-        System.out.println("Side b: " + b);
-        System.out.println("Side c: " + c);
+    public Point centroid() {
+        double x = ((a.getX() + b.getX() + c.getX()) / 3);
+        double y = ((a.getY() + b.getY() + c.getY()) / 3);
 
-        double s = (a + b + c) / 2.0;
+        return new Point(x,y);
+    }
 
-        System.out.println("Semi-perimeter (s): " + s);
-
-
-        double area = Math.sqrt(s * (s - a) * (s - b) * (s - c));
-
-        System.out.println("Area: " + area);
-
-        return area;
-
-    } // To-Do - rework this method and added a new method to solution this exercise
+    public static double length(Point a, Point b) {
+        double dx = a.getX() - b.getX();
+        double dy = a.getY() - b.getY();
+        return Math.sqrt(dx * dx + dy * dy);
+    }
 
     @Override
     public String toString() {
         return "Triangle{" +
-                "x1=" + x +
-                ", x2=" + y +
-                ", x3=" + z +
+                "x1=" + a +
+                ", x2=" + b +
+                ", x3=" + c +
                 '}';
     }
 }
