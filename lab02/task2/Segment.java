@@ -1,5 +1,7 @@
 package lab02.task2;
 
+import lab02.task1.Line;
+
 public class Segment {
 
     private Point startPoint;
@@ -39,8 +41,7 @@ public class Segment {
                       (startPoint.getY() + endPoint.getY()) / 2);
     }
 
-    public Point intersection(Segment another) {
-        return new Point(1, 4);
-        // To-Do: replace this method, very bad!
+    public Point intersection(Line otherLine) {
+        return new Point(1, 2);
     }
 }

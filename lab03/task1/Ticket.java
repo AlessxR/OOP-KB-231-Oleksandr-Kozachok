@@ -4,7 +4,7 @@ public class Ticket {
     private int id;
     private String name;
     private int estimate;
-    private static boolean completed;
+    private boolean completed;
 
     public Ticket(int id, int estimate, String name) {
         this.id = id;
@@ -26,7 +26,7 @@ public class Ticket {
     }
 
 
-    public static boolean isCompleted() {
+    public boolean isCompleted() {
         return completed;
     }
 
