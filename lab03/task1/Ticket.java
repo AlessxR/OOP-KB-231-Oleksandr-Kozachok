@@ -1,6 +1,7 @@
 package lab03.task1;
 
 public class Ticket {
+
     private int id;
     private String name;
     private int estimate;
@@ -33,4 +34,16 @@ public class Ticket {
     public void complete() {
         this.completed = true;
     }
+
+    @Override
+    public String toString() {
+        return "Ticket{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", estimate=" + estimate +
+                ", completed=" + completed +
+                '}';
+    }
 }
+
+// COMPLETE

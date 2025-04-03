@@ -1,34 +1,37 @@
 package lab03.task1;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class UserStory extends Ticket {
-    private boolean completed;
-    private ArrayList<UserStory> dependies;
+    private ArrayList<UserStory> dependencies; // Залежності
 
-    public UserStory(int id, int estimate, String name) {
+    public UserStory(int id, int estimate, String name, UserStory... dependencies) {
         super(id, estimate, name);
-        this.completed = false;
-        dependies = new ArrayList<>();
+        this.dependencies = new ArrayList<>();
+        this.dependencies.addAll(Arrays.asList(dependencies));
     }
 
+    @Override
     public void complete() {
-        // Перебираємо кожну зависимість
-        if(dependies.stream().allMatch(UserStory::isCompleted)) {
-            this.completed = true;
+        boolean allCompleted = true;
+        for (UserStory dependency : dependencies) {
+            if (!dependency.isCompleted()) {
+                allCompleted = false;
+                break;
+            }
+        }
+        if (allCompleted) {
+            super.complete();
         }
     }
 
-    public ArrayList<UserStory> getDependies() {
-        return dependies;
+    public ArrayList<UserStory> getDependencies() {
+        return new ArrayList<>(dependencies);
     }
 
     @Override
     public String toString() {
-        return "UserStory{" +
-                "ідентифікатор= " + getId() +
-                ", ім'я=" + getName() +
-                ", об'єкт реєстрації користувача, " + getDependies() +
-                '}';
+        return "[US " + getId() + "] " + getName();
     }
 }

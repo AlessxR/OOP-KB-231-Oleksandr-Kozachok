@@ -29,11 +29,6 @@ public class Triangle extends Figure{
         return new Point(x, y);
     }
 
-    @Override
-    public String toString() {
-        return "Triangle[" + "A(" + a + ")" +  ", " + b + ", " + c + "]";
-    }
-
     public Point getA() {
         return a;
     }
@@ -44,5 +39,9 @@ public class Triangle extends Figure{
 
     public Point getC() {
         return c;
+    }
+
+    public String toString() {
+        return "Triangle[" + a + " " + b + " " + c + "]";
     }
 }

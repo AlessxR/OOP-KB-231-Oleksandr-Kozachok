@@ -21,6 +21,6 @@ public class Circle extends Figure {
 
     @Override
     public String toString() {
-        return "Circle[(" + x + ")" + radius + "Radius" + "]";
+        return "Circle[" + x + " Radius: " + radius + "]";
     }
 }

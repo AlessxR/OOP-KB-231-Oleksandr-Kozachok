@@ -13,12 +13,12 @@ public class Bug extends Ticket {
         if (userStory == null || !userStory.isCompleted()) {
             return null;
         } else {
-            return new Bug(id, estimate,name, userStory);
+            return new Bug(id, estimate, name, userStory);
         }
     }
 
     @Override
     public String toString() {
-        return "Bug[ " + getId() + ", " + userStory.getName() + ": " + getName();
+        return "Bug #" + getId() + ", в " + userStory.getName() + ". Назва багу: " + getName();
     }
 }
